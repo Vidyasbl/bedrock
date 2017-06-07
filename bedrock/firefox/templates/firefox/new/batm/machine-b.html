@@ -6,18 +6,6 @@
 
 {% extends "firefox/new/batm/base.html" %}
 
-{% block experiments %}
-  {% if switch('experiment-firefox-new-batm-anim', ['en-US']) %}
-    {% javascript 'experiment_firefox_new_batm_anim' %}
-  {% endif %}
-{% endblock %}
-
-{% block optimizely %}
-  {% if switch('firefox-new-batm-anim-optimizely', ['en-US']) %}
-    {% include 'includes/optimizely.html' %}
-  {% endif %}
-{% endblock %}
-
 {% block page_css %}
   {% stylesheet 'firefox_new_batm_machine' %}
 {% endblock %}
@@ -27,7 +15,7 @@
 {% block content %}
 <main role="main">
   <header class="page-hero">
-    <h1 id="main-header-copy" data-experience="batm-machine-static"><span>{{ _('Browse against the machine') }}</span></h1>
+    <h1 id="main-header-copy" data-experience="batmb"><span>{{ _('Browse against the machine') }}</span></h1>
   </header>
 
   <div class="download-cta">

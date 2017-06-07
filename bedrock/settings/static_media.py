@@ -1415,7 +1415,7 @@ PIPELINE_JS = {
     'experiment_firefox_new_batm_anim': {
         'source_filenames': (
             'js/base/mozilla-traffic-cop.js',
-            'js/mozorg/experiment-firefox-new-batm-anim.js',
+            'js/firefox/new/experiment-firefox-new-batm-anim.js',
         ),
         'output_filename': 'js/experiment_firefox_new_batm_anim-bundle.js',
     },

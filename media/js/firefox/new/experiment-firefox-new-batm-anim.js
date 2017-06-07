@@ -8,9 +8,8 @@
     var cop = new Mozilla.TrafficCop({
         id: 'experiment_firefox_new_batm_anim',
         variations: {
-            'xv=batma': 33,         // animated machine
-            'xv=batmb': 33,         // non-animated machine
-            'xv=batmprivate': 33    // basic page, no machine
+            'v=a': 33,         // animated machine
+            'v=b': 33          // non-animated machine
         }
     });
 

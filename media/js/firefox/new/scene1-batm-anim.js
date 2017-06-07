@@ -26,24 +26,24 @@
         $('html').addClass('ready');
     });
 
-    // Set desktop media query
     if (typeof matchMedia !== 'undefined') {
+        // Set desktop media query
         mqDesktop = matchMedia('(min-width: 1000px)');
-    }
 
-    // Fire the points for desktop and up
-    if (mqDesktop.matches) {
-        setupPoints();
-    }
-
-    // Set or unset points on resize
-    mqDesktop.addListener(function(mq) {
-        if (mq.matches) {
+        // Fire the points for desktop and up
+        if (mqDesktop.matches) {
             setupPoints();
-        } else {
-            unsetPoints();
         }
-    });
+
+        // Set or unset points on resize
+        mqDesktop.addListener(function(mq) {
+            if (mq.matches) {
+                setupPoints();
+            } else {
+                unsetPoints();
+            }
+        });
+    }
 
     // Set up three points, two with buttons
     function setupPoints() {
@@ -59,19 +59,37 @@
         // Hide point 1, show point 2
         point1Next.on('click', function() {
             point1.fadeOut(100);
-            point2.fadeIn(100);
+            point2.fadeIn(100, function() {
+                window.dataLayer.push({
+                    'event': 'in-page-interaction',
+                    'eAction': 'popup interaction',
+                    'eLabel': 'Show ' + point2.data('point')
+                });
+            }).attr('tabindex', -1).focus();
         });
 
         // Hide point 2, show point 3
         point2Next.on('click', function() {
             point2.fadeOut(100);
-            point3.fadeIn(100);
+            point3.fadeIn(100, function() {
+                window.dataLayer.push({
+                    'event': 'in-page-interaction',
+                    'eAction': 'popup interaction',
+                    'eLabel': 'Show ' + point3.data('point')
+                });
+            }).attr('tabindex', -1).focus();
         });
 
         // Hide all points and just show the clicked one
         $('.point .open').on('click', function() {
             allPoints.fadeOut();
-            $(this).next('.label').fadeIn(100);
+            $(this).next('.label').fadeIn(100, function() {
+                window.dataLayer.push({
+                    'event': 'in-page-interaction',
+                    'eAction': 'popup interaction',
+                    'eLabel': 'Show ' + $(this).data('point')
+                });
+            }).attr('tabindex', -1).focus();
         });
     }
 
